@@ -636,10 +636,16 @@ class WaitDocsWindow(ttk.Frame):
         # paginație (înapoi stânga, înainte dreapta)
         pag = ttk.Frame(self, style="Main.TFrame")
         pag.pack(fill="x")
+
         self.page_lbl = ttk.Label(pag, text="", style="Subheading.TLabel")
         self.page_lbl.pack(side="left")
-        ttk.Button(pag, text="⟵ Înapoi", command=self.prev_page).pack(side="left")
-        ttk.Button(pag, text="Înainte ⟶", style="Accent.TButton", command=self.next_page).pack(side="right", padx=(6, 10))
+
+        nav = ttk.Frame(pag, style="Main.TFrame")
+        nav.pack(side="right")
+
+        ttk.Button(nav, text="⟵ Înapoi", command=self.prev_page).pack(side="left")
+        ttk.Button(nav, text="Înainte ⟶", style="Accent.TButton",
+                   command=self.next_page).pack(side="left", padx=(6, 0))
 
         # stil minim local (fallback)
         s = ttk.Style(self)
